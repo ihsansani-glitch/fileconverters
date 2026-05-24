@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 
-const pdfController = require("../controllers/pdfcontroller");
+const pdfController = require("../controllers/pdfController");
 
 // storage
 const storage = multer.diskStorage({
