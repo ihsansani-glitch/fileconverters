@@ -10,7 +10,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString()
 
-const API = 'http://localhost:5000/api/pdf'
+const API = 'https://fileconverters-lf0e.onrender.com/api/pdf'
 
 const NAV_TABS = [
   { id: 'Edit',        icon: '✏️', color: 'blue' },

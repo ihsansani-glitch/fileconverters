@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import heicIcon from '../../assets/heic-to-jpg.png'
 
-const API = 'http://localhost:5000/api/image'
+const API = 'https://fileconverters-lf0e.onrender.com/api/image'
 
 function HeicToJpg() {
 

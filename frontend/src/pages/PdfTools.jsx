@@ -11,7 +11,7 @@ import signPdfIcon from '../assets/sign-pdf.png';
 import watermarkPdfIcon from '../assets/watermark-pdf.png';
 import htmlPdfIcon from '../assets/html-to-pdf.png';
 import mainPdfLogo from '../assets/pdf-tools-logo.png';
-const API = 'http://localhost:5000/api/pdf'
+const API = 'https://fileconverters-lf0e.onrender.com/api/pdf'
 
 /* =========================
    MODAL

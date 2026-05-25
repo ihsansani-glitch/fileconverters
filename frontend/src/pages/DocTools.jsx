@@ -15,7 +15,7 @@ import pdfWordIcon from '../assets/pdf-word.png'
 import xlsxWordIcon from '../assets/xlsx-word.png'
 import pdfPptxIcon from '../assets/pdf-pptx.png'
 
-const API = 'http://localhost:5000/api/doc'
+const API = 'https://fileconverters-lf0e.onrender.com/api/doc'
 
 /* =========================
    MODAL

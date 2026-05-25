@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import rotateIcon from '../../assets/rotate.png'
 
-const API = 'http://localhost:5000/api/image'
+const API = 'https://fileconverters-lf0e.onrender.com/api/image'
 
 export default function RotateFlip() {
 

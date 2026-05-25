@@ -12,7 +12,7 @@ import VideoTools from './pages/VideoTools'
 import DocTools from './pages/DocTools'
 
 // Tool Pages
-import PdfEditor from './pages/tools/PdfEditor'
+import PdfEditor from "./pages/tools/pdfeditor";
 import PptxToPdf from './pages/tools/PptxToPdf'
 import Mp4ToMp3 from './pages/tools/Mp4ToMp3'
 import JpgToPng from './pages/tools/JpgToPng'

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import videoCompressorIcon from '../../assets/compress-image.png'
 
-const API = 'http://localhost:5000/api/video'
+const API = 'https://fileconverters-lf0e.onrender.com/api/video'
 
 function VideoCompressor() {
 

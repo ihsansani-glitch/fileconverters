@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import axios from 'axios'
 
-const API = 'http://localhost:5000/api'
+const API = 'https://fileconverters-lf0e.onrender.com/api'
 
 export default function ToolModal({ tool, onClose }) {
 

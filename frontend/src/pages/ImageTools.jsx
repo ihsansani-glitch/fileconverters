@@ -16,7 +16,7 @@ import resizeIcon from '../assets/resize.png'
 import rotateIcon from '../assets/rotate.png'
 
 
-const API = 'http://localhost:5000/api/image'
+const API = 'https://fileconverters-lf0e.onrender.com/api/image'
 
 function Modal({ tool, onClose }) {
   const [files, setFiles] = useState([])

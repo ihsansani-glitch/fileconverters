@@ -6,7 +6,7 @@ import 'react-pdf/dist/Page/TextLayer.css'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
 
-const API = 'http://localhost:5000/api/pdf'
+const API = 'https://fileconverters-lf0e.onrender.com/api/pdf'
 
 export default function SignPdf() {
   const [pdfFile,     setPdfFile]     = useState(null)
