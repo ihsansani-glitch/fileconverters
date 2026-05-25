@@ -17,7 +17,7 @@ exports.xlsxToCsv = async (req, res) => {
     fs.writeFileSync(outputPath, csv);
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -32,7 +32,7 @@ exports.csvToXlsx = async (req, res) => {
     xlsx.writeFile(workbook, outputPath);
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -72,7 +72,7 @@ exports.wordToPdf = async (req, res) => {
     fs.writeFileSync(outputPath, pdfBytes);
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -109,7 +109,7 @@ exports.xlsxToPdf = async (req, res) => {
     fs.writeFileSync(outputPath, pdfBytes);
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -157,7 +157,7 @@ exports.xlsxToWord = async (req, res) => {
     fs.writeFileSync(outputPath, buffer)
     fs.unlinkSync(req.file.path)
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` })
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
@@ -219,7 +219,7 @@ exports.pdfToPptx = (req, res) => {
         if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath)
 
         res.json({
-          downloadUrl: `http://localhost:5000/outputs/${outputFileName}`,
+          downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${outputFileName}`,
         })
       })
     })
@@ -278,7 +278,7 @@ exports.pdfToPptx = (req, res) => {
               if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath)
 
               res.json({
-                downloadUrl: `http://localhost:5000/outputs/${outputFileName}`,
+                downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${outputFileName}`,
               })
             })
           }, 2000)
@@ -329,7 +329,7 @@ exports.pdfToWord = (req, res) => {
       fs.unlinkSync(inputPath);
 
       res.json({
-        downloadUrl: `http://localhost:5000/outputs/${outputFileName}`,
+        downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${outputFileName}`,
       });
     });
   } catch (err) {

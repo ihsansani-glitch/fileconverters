@@ -21,7 +21,7 @@ exports.mp4ToMp3 = async (req, res) => {
     const outputPath = path.join("outputs", `${Date.now()}-output.mp3`);
     await runFfmpeg(req.file.path, outputPath, ["-vn", "-ab", "192k"]);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -37,7 +37,7 @@ exports.compressVideo = async (req, res) => {
       "-preset fast",
     ]);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -53,7 +53,7 @@ exports.trimVideo = async (req, res) => {
       `-t ${duration || 30}`,
     ]);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -65,7 +65,7 @@ exports.toAvi = async (req, res) => {
     const outputPath = path.join("outputs", `${Date.now()}-output.avi`);
     await runFfmpeg(req.file.path, outputPath);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -77,7 +77,7 @@ exports.toMkv = async (req, res) => {
     const outputPath = path.join("outputs", `${Date.now()}-output.mkv`);
     await runFfmpeg(req.file.path, outputPath);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

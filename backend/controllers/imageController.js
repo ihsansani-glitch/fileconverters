@@ -11,7 +11,7 @@ exports.jpgToPng = async (req, res) => {
     const outputPath = path.join("outputs", `${Date.now()}-output.png`);
     await sharp(req.file.path).png().toFile(outputPath);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -23,7 +23,7 @@ exports.pngToJpg = async (req, res) => {
     const outputPath = path.join("outputs", `${Date.now()}-output.jpg`);
     await sharp(req.file.path).jpeg({ quality: 90 }).toFile(outputPath);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -41,7 +41,7 @@ exports.resizeImage = async (req, res) => {
 fs.unlink(req.file.path, (err) => {
   if (err) console.log('File cleanup failed')
 })
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -55,7 +55,7 @@ exports.compressImage = async (req, res) => {
       .jpeg({ quality: 50 })
       .toFile(outputPath);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -67,7 +67,7 @@ exports.toWebp = async (req, res) => {
     const outputPath = path.join("outputs", `${Date.now()}-output.webp`);
     await sharp(req.file.path).webp({ quality: 80 }).toFile(outputPath);
     fs.unlinkSync(req.file.path);
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -95,7 +95,7 @@ exports.webpToJpg = async (req, res) => {
     }, 2000);
 
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     });
 
   } catch (err) {
@@ -136,7 +136,7 @@ exports.imgToPdf = async (req, res) => {
     fs.writeFileSync(outputPath, pdfBytes);
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -169,7 +169,7 @@ exports.heicToJpg = async (req, res) => {
     fs.unlinkSync(req.file.path)
       console.log('done')
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {
@@ -204,7 +204,7 @@ exports.svgToPng = async (req, res) => {
     fs.unlinkSync(req.file.path)
 
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {
@@ -241,7 +241,7 @@ exports.cropImage = async (req, res) => {
     fs.unlinkSync(req.file.path)
 
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {
@@ -275,7 +275,7 @@ exports.resizeImage = async (req, res) => {
     fs.unlinkSync(req.file.path)
 
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {
@@ -307,7 +307,7 @@ exports.upscaleImage = async (req, res) => {
     fs.unlinkSync(req.file.path)
 
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {
@@ -365,7 +365,7 @@ exports.rotateFlipImage = async (req, res) => {
 
     return res.json({
       downloadUrl:
-        `http://localhost:5000/${outputPath}`
+        `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {

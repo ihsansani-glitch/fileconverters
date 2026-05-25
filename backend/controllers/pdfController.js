@@ -41,7 +41,7 @@ exports.imageToPdf = async (req, res) => {
 
     fs.writeFileSync(outputPath, pdfBytes);
 
-    res.json({ downloadUrl: `http://localhost:5000/outputs/${fileName}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${fileName}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -72,7 +72,7 @@ exports.mergePdf = async (req, res) => {
 
     fs.writeFileSync(outputPath, await mergedPdf.save());
 
-    res.json({ downloadUrl: `http://localhost:5000/outputs/${fileName}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${fileName}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -101,7 +101,7 @@ exports.splitPdf = async (req, res) => {
 
       fs.writeFileSync(outputPath, await newPdf.save());
 
-      downloadUrls.push(`http://localhost:5000/outputs/${fileName}`);
+      downloadUrls.push(`https://fileconverters-lf0e.onrender.com/outputs/${fileName}`);
     }
 
     fs.unlinkSync(req.file.path);
@@ -132,7 +132,7 @@ exports.compressPdf = async (req, res) => {
 
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/outputs/${fileName}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${fileName}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -168,7 +168,7 @@ exports.pdfToWord = (req, res) => {
       fs.unlinkSync(inputPath);
 
       res.json({
-        downloadUrl: `http://localhost:5000/outputs/${fileName}`,
+        downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${fileName}`,
       });
     });
   } catch (err) {
@@ -205,7 +205,7 @@ exports.editPdf = async (req, res) => {
     fs.writeFileSync(outputPath, await pdfDoc.save());
     fs.unlinkSync(req.file.path);
 
-    res.json({ downloadUrl: `http://localhost:5000/outputs/${fileName}` });
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${fileName}` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -247,7 +247,7 @@ exports.pptxToPdf = (req, res) => {
       fs.unlinkSync(inputPath);
 
       res.json({
-        downloadUrl: `http://localhost:5000/outputs/${outputFileName}`,
+        downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${outputFileName}`,
       });
     });
   } catch (err) {
@@ -298,7 +298,7 @@ exports.pdfToJpg = (req, res) => {
         fs.rmdirSync(tempFolder)
         if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath)
 
-        res.json({ downloadUrl: `http://localhost:5000/outputs/${zipFileName}` })
+        res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/outputs/${zipFileName}` })
       })
 
       archive.on('error', (err) => {
@@ -358,7 +358,7 @@ exports.pdfToJpg = (req, res) => {
         jpgFiles.forEach(f => fs.unlinkSync(path.join(tempFolder, f)))
         fs.rmdirSync(tempFolder)
         if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath)
-        res.json({ downloadUrl: 'http://localhost:5000/outputs/' + zipFileName })
+        res.json({ downloadUrl: 'https://fileconverters-lf0e.onrender.com/outputs/' + zipFileName })
       })
 
       archive.on('error', (archiveErr) => {
@@ -414,7 +414,7 @@ exports.signPdf = async (req, res) => {
     fs.writeFileSync(outputPath, outputBytes)
     fs.unlinkSync(req.file.path)
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` })
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
@@ -484,7 +484,7 @@ for (let x = -spacingX; x < width + spacingX; x += spacingX) {
     fs.writeFileSync(outputPath, outputBytes)
     fs.unlinkSync(req.file.path)
 
-    res.json({ downloadUrl: `http://localhost:5000/${outputPath}` })
+    res.json({ downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}` })
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
@@ -526,7 +526,7 @@ exports.htmlToPdf = async (req, res) => {
     await browser.close()
 
     res.json({
-      downloadUrl: `http://localhost:5000/${outputPath}`
+      downloadUrl: `https://fileconverters-lf0e.onrender.com/${outputPath}`
     })
 
   } catch (err) {
