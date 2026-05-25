@@ -26,7 +26,7 @@ app.use("/uploads", express.static(uploadsDir))
 app.use("/outputs", express.static(outputsDir))
 
 // Routes
-app.use("/api/pdf", require("./routes/pdfroutes"))
+app.use("/api/pdf", require("./routes/pdfRoutes"))
 app.use("/api/image", require("./routes/imageRoutes"))
 app.use("/api/video", require("./routes/videoRoutes"))
 app.use("/api/doc", require("./routes/docRoutes"))
