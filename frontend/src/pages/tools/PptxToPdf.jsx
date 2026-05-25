@@ -1,4 +1,4 @@
-import ToolPage from '../../components/ToolPage'
+import ToolPage from '../../components/Toolpage'
 
 export default function PptxToPdf() {
   return (
