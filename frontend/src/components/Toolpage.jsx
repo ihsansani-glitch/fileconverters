@@ -45,7 +45,7 @@ function ToolPage({
       const data = await res.json()
       if (data.error) setError(data.error)
       else setResult(data)
-    } catch (err) {
+    } catch {
       setError('Something went wrong. Please try again.')
     }
     setLoading(false)
