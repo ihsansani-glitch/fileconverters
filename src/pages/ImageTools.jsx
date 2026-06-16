@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Draggable from "react-draggable"
-
+import UploadBox from '../components/UploadBox'
 import jpgToPngIcon from '../assets/jpg-to-png.png'
 import pngToJpgIcon from '../assets/png-to-jpg.png'
 import mainImgLogo from '../assets/img-tools-logo.png'
@@ -51,6 +51,16 @@ function Modal({ tool, onClose }) {
       document.body.style.overflow = 'unset'
     }
   }, [])
+
+  // Release the object URL created for the preview when it changes or the
+  // modal unmounts, otherwise each upload leaks memory.
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl)
+      }
+    }
+  }, [previewUrl])
 
   const handleFiles = (selected) => {
     if (!selected || selected.length === 0) return
@@ -241,6 +251,7 @@ function Modal({ tool, onClose }) {
         <input
           ref={inputRef}
           type="file"
+          accept="image/*"
           className="hidden"
           onChange={(e) =>
             handleFiles(e.target.files)
@@ -251,7 +262,7 @@ function Modal({ tool, onClose }) {
           onClick={() => inputRef.current.click()}
           className="w-full border border-dashed border-slate-600 text-white py-8 rounded-xl"
         >
-          Upload File
+          {files.length ? files[0].name : 'Upload File'}
         </button>
 
         {/* PROGRESS */}
@@ -272,7 +283,8 @@ function Modal({ tool, onClose }) {
         {!result ? (
           <button
             onClick={handleConvert}
-            className={`w-full mt-5 bg-gradient-to-r ${tool.gradient} text-white py-3 rounded-xl font-bold`}
+            disabled={loading}
+            className={`w-full mt-5 bg-gradient-to-r ${tool.gradient} text-white py-3 rounded-xl font-bold disabled:opacity-60`}
           >
             {loading
               ? 'Processing...'
@@ -428,51 +440,90 @@ export default function ImageTools() {
       <div className="h-20" />
 
       {/* HERO */}
-      <div className="text-center py-20">
-        <img
-          src={mainImgLogo}
-          alt="Image Tools"
-          className="w-40 mx-auto mb-6"
-        />
+      <div className="min-h-[55vh] flex flex-col justify-center items-center text-center px-6">
 
-        <h1 className="text-5xl font-bold">
+        <div className="mb-8 transform transition-all duration-500 hover:-translate-y-2">
+          <img
+            src={mainImgLogo}
+            alt="Image Tools"
+            className="w-48 md:w-56 object-contain drop-shadow-[0_20px_45px_rgba(59,130,246,0.35)] hover:scale-110 transition-all duration-700"
+          />
+        </div>
+
+        <h1 className="text-5xl md:text-6xl font-bold text-slate-900">
           Image Tools
         </h1>
+
+        <p className="mt-6 text-lg text-slate-600 max-w-2xl">
+          Convert, resize, crop, compress, watermark and enhance images instantly with professional-quality tools.
+        </p>
+
       </div>
 
       {/* GRID */}
-      <div className="grid md:grid-cols-3 gap-6 px-10">
-        {tools.map((tool) => (
-          <button
-            key={tool.id}
-            onClick={() =>
-              tool.path
-                ? navigate(tool.path)
-                : setActiveTool(tool)
-            }
-            className="bg-white p-6 rounded-2xl shadow"
-          >
-            <img
-              src={tool.icon}
-              alt={tool.title}
-              className="w-24 mx-auto"
-            />
+      <div className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <h3 className="mt-3 font-bold">
-              {tool.title}
-            </h3>
-          </button>
-        ))}
+          {tools.map((tool) => (
+            <div key={tool.id} className="relative group">
+
+              {/* Glow */}
+              <div
+                className={`absolute -inset-1 rounded-3xl blur opacity-20 group-hover:opacity-40 transition-all duration-300 bg-gradient-to-r ${tool.gradient}`}
+              />
+
+              {/* Card */}
+              <button
+                onClick={() =>
+                  tool.path
+                    ? navigate(tool.path)
+                    : setActiveTool(tool)
+                }
+                className="relative w-full bg-white border border-slate-200 rounded-3xl shadow-sm p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
+
+                {/* Icon */}
+                <div className="mb-5 flex justify-center items-center">
+                  <div className="w-32 h-24 flex items-center justify-center">
+                    <img
+                      src={tool.icon}
+                      alt={tool.title}
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl font-semibold text-slate-900">
+                  {tool.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-slate-600 text-sm mt-2">
+                  {tool.description}
+                </p>
+
+                {/* Plus */}
+                <div className="mt-5 text-slate-900 text-2xl font-light group-hover:scale-125 transition-transform duration-300">
+                  +
+                </div>
+
+              </button>
+
+            </div>
+          ))}
+
+        </div>
       </div>
 
+      {/* MODAL */}
       {activeTool && (
         <Modal
           tool={activeTool}
-          onClose={() =>
-            setActiveTool(null)
-          }
+          onClose={() => setActiveTool(null)}
         />
       )}
+
     </div>
   )
 }
